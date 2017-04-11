@@ -5,6 +5,10 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.madn.game.madnGame;
 
+/**
+ * Created by max on 31.03.2017.
+ */
+
 public class MenuState extends State {
 
     private Texture background;
