@@ -17,7 +17,7 @@ public class madnGame extends ApplicationAdapter {
     public void create() {
         gsm = new GameStateManager();
         batch = new SpriteBatch();
-        Gdx.gl.glClearColor(1, 0, 0, 1);
+        Gdx.gl.glClearColor(1, 1, 1, 1);
         gsm.push(new MenuState(gsm));
     }
 
