@@ -3,5 +3,6 @@
 
     <string name="app_name">Mensch Ärgere Dich Nicht</string>
     <string name="title_activity_multiplayer">MultiplayerActivity</string>
+    <string name="title_activity_play_field">playField</string>
 
 </resources>
