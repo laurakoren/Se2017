@@ -41,5 +41,7 @@ public abstract class State {
     /**
      * Frees memory and unload unnecessary textures.
      */
+
+
     public abstract void dispose();
 }

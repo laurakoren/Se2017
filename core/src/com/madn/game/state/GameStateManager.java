@@ -1,6 +1,7 @@
 package com.madn.game.state;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 
 import java.util.Stack;
 
@@ -60,5 +61,9 @@ public class GameStateManager {
      */
     public void render(SpriteBatch sb) {
         states.peek().render(sb);
+    }
+
+    public void render(Stage s){
+
     }
 }
