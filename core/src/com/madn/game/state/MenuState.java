@@ -17,7 +17,7 @@ public class MenuState extends State {
     public MenuState(com.madn.game.state.GameStateManager gsm) {
         super(gsm);
         cam.setToOrtho(false, madnGame.WIDTH / 2, madnGame.HEIGHT / 2);
-        background = new Texture("bg.jpg");
+        background = new Texture("badlogic.jpg");
         button = new Texture("btn.png");
     }
 
