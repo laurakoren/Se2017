@@ -29,4 +29,14 @@ public class GameLogic {
 
         return true;
     }
+
+    //checks whether a field already has a figure on it, sets that figure to its starting point and the new figure on the field
+    public void kick (Figure figure, Field field){
+        if(field.hasFigure()){
+            field.getFigure().setField(null);   // TODO: Startfeld bestimmen
+            figure.setField(field);
+        }else{
+            figure.setField(field);
+        }
+    }
 }
