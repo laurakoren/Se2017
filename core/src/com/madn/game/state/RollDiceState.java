@@ -2,10 +2,6 @@ package com.madn.game.state;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
@@ -13,8 +9,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
-import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.madn.game.madnGame;
 
 import java.util.Random;
 
@@ -25,26 +19,18 @@ import java.util.Random;
 public class RollDiceState extends State {
 
     private final Sound sound = Gdx.audio.newSound(Gdx.files.internal("data/mysound.mp3"));
-
+    private Skin skin;
     private TextButton roll_button;
-
     private Random randomNumber = new Random();
-
     private int rolledNumber;
-
     private Button cheat_button;
-
     private boolean cheated = false;
-
     private Stage st;
-
     private Dialog d;
 
-    Skin skin;
-
     public RollDiceState(GameStateManager gsm){
-       super(gsm);
-        cam.setToOrtho(false, madnGame.WIDTH / 2, madnGame.HEIGHT / 2);
+        super(gsm);
+        //cam.setToOrtho(false, madnGame.WIDTH / 2, madnGame.HEIGHT / 2);
 
         st = new Stage();
 
@@ -94,8 +80,10 @@ public class RollDiceState extends State {
     @Override
     public void update(float dt) {
         handleInput();
+        st.act(dt);
     }
 
+    /*
     @Override
     public void render(SpriteBatch sb) {
        // sb.setProjectionMatrix(cam.combined);
@@ -103,10 +91,13 @@ public class RollDiceState extends State {
        //sb.draw(background, 0, 0, cam.viewportWidth, cam.viewportHeight);
        // sb.draw(bt1, cam.position.x - bt1.getWidth() / 2, cam.position.y - bt1.getHeight() / 2);
         //sb.end();
-
-
     }
+    */
 
+    @Override
+    public void render() {
+        st.draw();
+    }
 
     @Override
     public void dispose() {

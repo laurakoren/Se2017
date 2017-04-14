@@ -3,6 +3,7 @@ package com.madn.game.gameLogic;
 /**
  * The internal representation for the game board.
  */
+@SuppressWarnings("WeakerAccess")
 public class GameLogic {
     private LinkedFieldCircle boardPath;
 

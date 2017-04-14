@@ -3,7 +3,7 @@ package com.madn.game.gameLogic;
 /**
  * Model for the circular path on the game board.
  */
-public class LinkedFieldCircle {
+class LinkedFieldCircle {
     // TODO: besseren Namen für die Klasse finden
 
     private Field first;
