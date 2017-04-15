@@ -35,7 +35,7 @@ public class Server extends Thread {
             serverSocket = new ServerSocket(0);
             this.port = serverSocket.getLocalPort();
             this.ip = serverSocket.getInetAddress();
-            run();
+            start();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -44,12 +44,14 @@ public class Server extends Thread {
 
     @Override
     public void run() {
+        System.out.println("Server starts "+port);
         while(joinedPlayers < maxPlayer) {
             try {
                 Socket clientSocket = null;
                 clientSocket = serverSocket.accept();
                 if (clientSocket != null) {
                      clients[joinedPlayers] = new Client(clientSocket);
+                     clients[joinedPlayers].start();
                     joinedPlayers++;
                 }
             } catch (IOException e) {
