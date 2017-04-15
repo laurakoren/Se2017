@@ -7,8 +7,11 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
+import com.madn.game.madnGame;
 
 import java.util.Random;
 
@@ -19,7 +22,6 @@ import java.util.Random;
 public class RollDiceState extends State {
 
     private final Sound sound = Gdx.audio.newSound(Gdx.files.internal("data/mysound.mp3"));
-    private Skin skin;
     private TextButton roll_button;
     private Random randomNumber = new Random();
     private int rolledNumber;
@@ -27,91 +29,84 @@ public class RollDiceState extends State {
     private boolean cheated = false;
     private Stage st;
     private Dialog d;
+    private Skin skin;
+    private Table tbl;
 
-    public RollDiceState(GameStateManager gsm){
-        super(gsm);
-        //cam.setToOrtho(false, madnGame.WIDTH / 2, madnGame.HEIGHT / 2);
 
-        st = new Stage();
+    public RollDiceState(com.madn.game.state.GameStateManager gsm){
+       super(gsm);
 
-        skin = new Skin(Gdx.files.internal("btn.png"));
+        skin = new Skin(Gdx.files.internal("ui/default/uiskin.json"));
+        skin.getFont("default-font").getData().setScale(3f);
+
+        st = new Stage(new StretchViewport(720, 1280), batch);
+        Gdx.input.setInputProcessor(this.st);
+
+        tbl = new Table(skin);
+        tbl.setFillParent(true);
+        tbl.defaults().width(500).pad(15);
 
         roll_button = new TextButton("Würfeln", skin);
-        roll_button.setPosition(300,300);
-        roll_button.setSize(100,100);
 
         roll_button.addListener(new ClickListener(){
                 @Override
             public void touchUp(InputEvent e, float x, float y, int point, int button){
                     rolledNumber = randomNumber.nextInt(6) + 1; //nextInt(6) gibt Zahlen von 0 bis 5 -> daher + 1
-                    doAnimationAndSound();
+                    //doAnimationAndSound();
                 }
         });
-        st.addActor(roll_button);
+        tbl.add(roll_button);
+        tbl.row();
 
         //Schummelbutton mit Schummelfunktion
         cheat_button = new TextButton("Schummeln", skin);
-        cheat_button.setPosition(500,500);
-        cheat_button.setSize(100,100);
 
         cheat_button.addListener(new ClickListener(){
             @Override
             public void touchUp(InputEvent e, float x, float y, int point, int button){
                 //Popup mit möglichen Zahlen die man würfeln kann; skin muss geändert werden
-               d = new Dialog("Welche Zahl möchtest du würfeln?", skin);
-                d.button("Eins");
-                d.button("Zwei");
+              // d = new Dialog("Welche Zahl möchtest du würfeln?", skin);)   d.button("Eins");
+              //  d.button("Zwei");
             }
         });
+        tbl.add(cheat_button);
 
-        st.addActor(cheat_button);
-        Gdx.input.setInputProcessor(st);
+        st.addActor(tbl);
+
 
     }
 
     @Override
     public void handleInput() {
-        if (Gdx.input.justTouched()) {
-            gsm.set(new TestState(gsm));
-            this.dispose();
-        }
+
     }
 
     @Override
     public void update(float dt) {
-        handleInput();
-        st.act(dt);
+        this.st.act(dt);
     }
-
-    /*
-    @Override
-    public void render(SpriteBatch sb) {
-       // sb.setProjectionMatrix(cam.combined);
-        //sb.begin();
-       //sb.draw(background, 0, 0, cam.viewportWidth, cam.viewportHeight);
-       // sb.draw(bt1, cam.position.x - bt1.getWidth() / 2, cam.position.y - bt1.getHeight() / 2);
-        //sb.end();
-    }
-    */
 
     @Override
     public void render() {
         st.draw();
+
     }
+
 
     @Override
     public void dispose() {
-
+        st.dispose();
 
     }
 
     private void doAnimationAndSound(){
-        changePicture(rolledNumber);
         //spielt Sound ab
         sound.play(1.0f);
+        changePicture(rolledNumber);
+
     }
 
-    //Methode die das Bild ändert anhand der gewürfelten Zahl
+    //Methode die das Bild ändert anhand der gewürfelten Zahl; muss noch implementiert werden
     private void changePicture(int number){
         switch(number){
             case 1:

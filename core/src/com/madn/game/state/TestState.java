@@ -53,7 +53,12 @@ public class TestState extends State {
         table.add(btn1);
         table.row();
 
-        btn2 = new TextButton("Btn2", skin);
+        btn2 = new TextButton("RollDiceBttn", skin);
+        btn2.addListener(new ClickListener(){
+            public void clicked(InputEvent event, float x, float y){
+                gsmDup.set(new RollDiceState(gsmDup));
+            }
+        });
         table.add(btn2);
         //table.row();
 
@@ -76,5 +81,6 @@ public class TestState extends State {
 
     @Override
     public void dispose() {
+
     }
 }

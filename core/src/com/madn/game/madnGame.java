@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.madn.game.state.GameStateManager;
+import com.madn.game.state.RollDiceState;
 import com.madn.game.state.TestState;
 
 public class madnGame extends ApplicationAdapter {
