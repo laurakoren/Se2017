@@ -11,9 +11,11 @@ import java.util.Stack;
  */
 public class GameStateManager {
     private Stack<State> states;
+    private SpriteBatch batch;
 
-    public GameStateManager() {
+    public GameStateManager(SpriteBatch batch) {
         states = new Stack<State>();
+        this.batch = batch;
     }
 
     /**
@@ -55,10 +57,13 @@ public class GameStateManager {
     /**
      * Calls the render method of the top State.
      *
-     * @param sb a SpriteBatch
      * @see State
      */
-    public void render(SpriteBatch sb) {
-        states.peek().render(sb);
+    public void render() {
+        states.peek().render();
+    }
+
+    public SpriteBatch getSpriteBatch() {
+        return batch;
     }
 }

@@ -1,9 +1,7 @@
 package com.madn.game.state;
 
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.scenes.scene2d.Action;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.madn.game.multiplayer.Server;
@@ -15,7 +13,7 @@ import com.madn.game.multiplayer.Server;
 public class MainMultiplayerState extends State {
 
     private Button btn = new Button();
-    private Stage st = new Stage();
+    private Stage stage = new Stage();
     private TextureAtlas t = new TextureAtlas();
     private Server server;
 
@@ -23,7 +21,7 @@ public class MainMultiplayerState extends State {
         super(gsm);
         btn.setPosition(100, 100);
         btn.setColor(Color.BLACK);
-       server = Server.getInstance();
+        server = Server.getInstance();
     }
 
     @Override
@@ -33,13 +31,12 @@ public class MainMultiplayerState extends State {
 
     @Override
     public void update(float dt) {
-
+        stage.act(dt);
     }
 
     @Override
-    public void render(SpriteBatch sb) {
-        sb.begin();
-        sb.end();
+    public void render() {
+        stage.draw();
     }
 
     @Override
