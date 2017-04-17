@@ -1,22 +1,19 @@
 package com.madn.game.state;
 
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector3;
 
 /**
  * Created by max on 31.03.2017.
  */
 
-public abstract class State {
-    protected OrthographicCamera cam;
-    protected Vector3 mouse;
+@SuppressWarnings("WeakerAccess")
+abstract class State {
     protected GameStateManager gsm;
+    protected SpriteBatch batch;
 
     public State(GameStateManager gsm) {
         this.gsm = gsm;
-        cam = new OrthographicCamera();
-        mouse = new Vector3();
+        this.batch = gsm.getSpriteBatch();
     }
 
     /**
@@ -33,13 +30,11 @@ public abstract class State {
 
     /**
      * Draws the contents of this state to the screen.
-     *
-     * @param sb the SpriteBatch to draw in
      */
-    public abstract void render(SpriteBatch sb);
+    public abstract void render();
 
     /**
-     * Frees memory and unload unnecessary textures.
+     * Frees memory and unloads unnecessary textures.
      */
     public abstract void dispose();
 }

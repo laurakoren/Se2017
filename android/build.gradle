@@ -19,7 +19,7 @@ android {
     }
     defaultConfig {
         applicationId "com.madn.game"
-        minSdkVersion 9
+        minSdkVersion 10
         targetSdkVersion 25
     }
 }

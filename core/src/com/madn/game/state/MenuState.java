@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.madn.game.madnGame;
+import com.madn.game.multiplayer.Server;
 
 /**
  * Created by max on 31.03.2017.
@@ -14,11 +15,15 @@ public class MenuState extends State {
     private Texture background;
     private Texture button;
 
+
+    private Server server;
+
     public MenuState(com.madn.game.state.GameStateManager gsm) {
         super(gsm);
         cam.setToOrtho(false, madnGame.WIDTH / 2, madnGame.HEIGHT / 2);
         background = new Texture("bg.jpg");
         button = new Texture("btn.png");
+
     }
 
     @Override
@@ -26,6 +31,7 @@ public class MenuState extends State {
         if (Gdx.input.justTouched()) {
             gsm.set(new TestState(gsm));
             this.dispose();
+            server = Server.getInstance();
         }
     }
 
