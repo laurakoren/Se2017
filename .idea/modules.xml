@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/core/core.iml" filepath="$PROJECT_DIR$/core/core.iml" />
       <module fileurl="file://$PROJECT_DIR$/desktop/desktop.iml" filepath="$PROJECT_DIR$/desktop/desktop.iml" />
       <module fileurl="file://$PROJECT_DIR$/field/field.iml" filepath="$PROJECT_DIR$/field/field.iml" />
+      <module fileurl="file://$PROJECT_DIR$/field/field.iml" filepath="$PROJECT_DIR$/field/field.iml" />
     </modules>
   </component>
 </project>
