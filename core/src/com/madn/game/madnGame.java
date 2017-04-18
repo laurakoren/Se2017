@@ -22,6 +22,7 @@ public class madnGame extends ApplicationAdapter {
         gsm = new GameStateManager(batch);
         Gdx.gl.glClearColor(1, 1, 1, 1);
 
+        Gdx.input.setCatchBackKey(true);
         gsm.push(new TestState(gsm));
         //gsm.push(new RollDiceState(gsm));
     }

@@ -20,6 +20,7 @@ public class TestState extends State {
     private Table table;
     private TextButton btn1;
     private TextButton btn2;
+    private TextButton multiPlayerBtn;
 
     public TestState(GameStateManager gsm) {
         super(gsm);
@@ -60,7 +61,16 @@ public class TestState extends State {
             }
         });
         table.add(btn2);
-        //table.row();
+        table.row();
+
+        multiPlayerBtn = new TextButton("Multiplayer", skin);
+        multiPlayerBtn.addListener(new ClickListener() {
+            public void clicked(InputEvent event, float x, float y) {
+                gsmDup.set(new MainMultiplayerState(gsmDup));
+            }
+        });
+        table.add(multiPlayerBtn);
+        table.row();
 
         stage.addActor(table);
     }
